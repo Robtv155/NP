@@ -11,10 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 import os
+
+# Solo carga .env si NO estás en Railway
+if not os.environ.get("RAILWAY_STATIC_URL"):
+    from dotenv import load_dotenv
+    load_dotenv()
+
+from decouple import config
 import dj_database_url
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
