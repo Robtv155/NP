@@ -13,13 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
-# Solo carga .env si NO estás en Railway
 if not os.environ.get("RAILWAY_STATIC_URL"):
     from dotenv import load_dotenv
     load_dotenv()
-
-from decouple import config
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,7 +85,6 @@ WSGI_APPLICATION = 'nuevo_proyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-load_dotenv()
 
 '''DEFAULT_SQLITE=f' sqlite:///{BASE_DIR/"db.sqlite3"}'
 DATABASE_URL= config('DATABASE_URL')
