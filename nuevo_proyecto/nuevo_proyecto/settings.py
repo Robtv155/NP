@@ -14,6 +14,7 @@ from pathlib import Path
 from decouple import config
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,17 +84,24 @@ WSGI_APPLICATION = 'nuevo_proyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     # 'default': dj_database_url.config(
-#     #     default= f'sqlite:///{BASE_DIR/"db.sqlite3"}',
-#     #     conn_max_age=600,
-#     #     ssl_require=os.getenv('DATABASE_URL', '').startswith('postgres')
-#     #     ) 
-#}
+load_dotenv()
+
+'''DEFAULT_SQLITE=f' sqlite:///{BASE_DIR/"db.sqlite3"}'
+DATABASE_URL= config('DATABASE_URL')
+DATABASES = {
+    'default': dj_database_url.config(
+    default= DATABASE_URL,
+    conn_max_age=600,
+    ) 
+}'''
 
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
+
+
+
+
 
         
         # Conexión DB local con sqlite:
