@@ -18,6 +18,7 @@ if not os.environ.get("RAILWAY_STATIC_URL"):
     load_dotenv()
 
 import dj_database_url
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
